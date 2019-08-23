@@ -1,0 +1,48 @@
+ ' Create WScript Shell Object to access filesystem.
+ Set WshShell = WScript.CreateObject("WScript.Shell")
+
+ ' Start / Run Audacity.EXE
+ WshShell.Run "D:\Audacity\audacity.exe"
+ 
+ ' Select, or bring Focus to a window named `Audacity`
+ WshShell.AppActivate "Audacity"
+  
+ ' Wait for 4 seconds
+ WScript.Sleep 4000
+  
+ ' Open a file
+ WshShell.SendKeys "^o"
+   
+ ' Wait for 4 seconds
+ WScript.Sleep 4000
+  
+ ' Selecting a File
+ WshShell.SendKeys "D:\Audio\Music.wav"
+ WshShell.SendKeys "{ENTER}"
+  
+ ' Wait for 4 seconds
+ WScript.Sleep 2000
+ ' To Invert the Selected Track 
+ WshShell.SendKeys "^9"
+ 
+ ' Wait for 4 seconds
+ WScript.Sleep 2000
+   
+ ' Import > Audio... 	CTRL + SHIFT + I 	Similar to 'Open', except that the file is added as a new track to your existing project. 
+ WshShell.SendKeys "^+I"
+ ' Wait for 4 seconds
+ WScript.Sleep 4000
+ 
+ ' Selecting a File
+ WshShell.SendKeys "D:\Audio\DTMFReverb.wav"
+ WshShell.SendKeys "{ENTER}"
+ 
+ ' Wait for 4 seconds
+ WScript.Sleep 2000
+ 'Select > All 	CTRL + A 	Selects all of the audio in all of the tracks. 
+ WshShell.SendKeys "^A"
+ 
+ ' Wait for 4 seconds
+ WScript.Sleep 2000
+ 'Mix and Render to New Track 	CTRL + SHIFT + M 	Same as Tracks > Mix and Render, except that the original tracks are preserved rather than being replaced by the resulting "Mix" track. 
+ WshShell.SendKeys "^+M"

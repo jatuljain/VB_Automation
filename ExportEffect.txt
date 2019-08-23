@@ -1,0 +1,98 @@
+ ' Create WScript Shell Object to access filesystem.
+ Set WshShell = WScript.CreateObject("WScript.Shell")
+ Set objShell = CreateObject("Wscript.Shell")
+
+ ' Start / Run Audacity.EXE
+ WshShell.Run "D:\Audacity\audacity.exe"
+ 
+ ' Select, or bring Focus to a window named `Audacity`
+ WshShell.AppActivate "Audacity"
+  
+ ' Wait for 4 seconds
+ WScript.Sleep 7000
+ intReturn = objShell.Popup("Adding 1st Track", _
+    5, "Add Track")
+ 'Add New > Audio Track 	CTRL + SHIFT + N 	Creates a new empty audio track. 
+ WshShell.SendKeys "^+N"
+ 
+ ' Wait for 4 seconds
+ WScript.Sleep 2000
+ 
+ intReturn = objShell.Popup("Generating a Chirp Track", _
+    5, "Generate Track")
+ 'Generate Menu --> Chirp. 
+ WshShell.SendKeys "^+%C"
+  WshShell.SendKeys "{ENTER}"
+  
+ 
+ ' Wait for 1 seconds
+ WScript.Sleep 1000
+  intReturn = objShell.Popup("Adding 2nd Track", _
+    5, "Add Track")
+ 'Add New > Audio Track 	CTRL + SHIFT + N 	Creates a new empty audio track. 
+ WshShell.SendKeys "^+N"
+ 
+ ' Wait for 4 seconds
+ WScript.Sleep 2000
+ intReturn = objShell.Popup("Generating a 1st DTMF Track", _
+    5, "Generate Track")
+ 'Generate Menu --> DTMF. 
+ WshShell.SendKeys "^+%D"
+  WshShell.SendKeys "{ENTER}"
+ 
+ ' Wait for 1 seconds
+ WScript.Sleep 1000
+  intReturn = objShell.Popup("Adding 3rd Track", _
+    5, "Add Track")
+ 'Add New > Audio Track 	CTRL + SHIFT + N 	Creates a new empty audio track. 
+ WshShell.SendKeys "^+N"
+ 
+ 
+ ' Wait for 4 seconds
+ WScript.Sleep 2000
+ 'Generate Menu --> DTMF. 
+ intReturn = objShell.Popup("Generating 2nd DTMF Track", _
+    5, "Generate Track")
+ WshShell.SendKeys "^+%D"
+  WshShell.SendKeys "{ENTER}"
+  
+ ' Wait for 2 seconds
+ WScript.Sleep 2000
+ intReturn = objShell.Popup("Selecting all the Tracks to add Reverb effect", _
+    5, "Select Track")
+ 'Select > All 	CTRL + A 	Selects all of the audio in all of the tracks. 
+ WshShell.SendKeys "^A"
+ 
+ ' Wait for 2 seconds
+ WScript.Sleep 2000
+ 'Effect --> Reverb. 
+ intReturn = objShell.Popup("Adding Reverb effect to Tracks", _
+    5, "Add Effect")
+ WshShell.SendKeys "^+{F3}"
+ WshShell.SendKeys "{ENTER}"
+ 
+ ' Wait for 2 seconds
+ WScript.Sleep 2000
+ intReturn = objShell.Popup("Selecting all the Track to Mix and Render", _
+    5, "Select Track")
+ 'Select > All 	CTRL + A 	Selects all of the audio in all of the tracks. 
+ WshShell.SendKeys "^A"
+ ' Wait for 2 seconds
+ WScript.Sleep 2000
+ 'Mix and Render to New Track 	CTRL + SHIFT + M 	Same as Tracks > Mix and Render, except that the original tracks are preserved rather than being replaced by the resulting "Mix" track. 
+ WshShell.SendKeys "^+M"
+ 
+ ' Wait for 3 seconds
+ WScript.Sleep 3000
+ intReturn = objShell.Popup("Exporting output to Output File", _
+    5, "Export Track")
+ 'Export Audio. 
+ WshShell.SendKeys "^+E"
+ 
+ 'Saving exported file with name Output
+ WshShell.SendKeys "ooutput"
+ WshShell.SendKeys "{ENTER}"
+ WScript.Sleep 2000
+ WshShell.SendKeys "{ENTER}"
+ WshShell.SendKeys "{ENTER}"
+ WshShell.SendKeys "{ENTER}"
